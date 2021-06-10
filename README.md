@@ -2,26 +2,36 @@
 
 Building a NLP engine to quiz you on material from a textbook pdf
 
-## Main Tasks
+## Tasks 
 
-1. Given a chunk(s) of text, generate a question and answer pair based on important concepts
-	- **Current Approach**
-   		 - Supervised learning might be a good method here, because "important" is a fuzzy word and it would make better sense to use lets say pdf textbooks and the end of the chapter questions and their answers as train, test, validate data
-    	    - Use summarization techniques from nlp to filter down inputs https://www.machinelearningplus.com/nlp/text-summarization-approaches-nlp-example/
-			- Given this approach, we think the bigger task would be to extract questions and answers from a textbook using NLP to generate our dataset. 
-2. Generate similar, but not obvious false answers (or, would make it short answer and some how check validity to correct answer)
-	- **Current Approach**
-		- Again, data can be extracted from textbooks if they have multiple choice in the textbook questions and answers
+1. Given a chunk(s) of text, generate a multiple choice and/or short answer questions based on important concepts 
 
-### Model
-- Outline:
-   - **Input:** chapter's worth of text
-   - **Output:** List of question and answer pairs
+2. Answer validation 
+  - Multiple choice: Generate incorrect multiple choice options 
+  - Short answer: Evaluate the correctness of inputted answer
 
-- Potential options:
-   - BERT seemed interesting as it has a semi-supervised approach and is very popular
-   - Make a custom transformer model
-   - Use OpenAI GPT-3 somehow
+## Approaches for tasks
+Warning: I really know nothing about NLP, so a lot of this might not work.
+
+### Task 1
+
+1. Supervised learning. Many textbooks have chapter questions at the end of each chapter with answers which can be used as training data. Use BERT or variation on HuggingFace
+
+- Pros
+  - Less feature engineering, as the model can infer which parts of the chapter and details are important and which are not.
+- Cons
+  - For this to scale, it requires a data OCR pipeline that takes PDFs, converts to images, and scans them for the question and answer portions 
+
+2. GPT-3?
+
+### Task 2
+
+#### Multiple choice
+Might not be feasible. Humans are pretty good at detecting BS, and I'm not a PhD ML student, so I don't know if its feasbile for us to build a good MC option generator.
+
+#### Short Answer
+1. Create a similarity algorithm that determines if the inputted answer is correct. Could be as simple as if input contains a certain number of keywords, then it is correct.
+2. NLP model that can determine if an answer is correct or not. Dunno how to do this well, needs some more thinking. User to provide +/- labels to improve the model?
 
 ## Feedback
 
