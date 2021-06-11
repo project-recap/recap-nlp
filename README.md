@@ -2,6 +2,8 @@
 
 Building a NLP engine to quiz you on material from a textbook pdf
 
+Check out the web-dev repo my boy Ramki is building [here]() 
+
 ## Tasks 
 
 1. Given a chunk(s) of text, generate a multiple choice and/or short answer questions based on important concepts 
@@ -27,7 +29,7 @@ Warning: I really know nothing about NLP, so a lot of this might not work.
 ### Task 2
 
 #### Multiple choice
-Might not be feasible. Humans are pretty good at detecting BS, and I'm not a PhD ML student, so I don't know if its feasbile for us to build a good MC option generator.
+Might not be feasible. Humans are pretty good at detecting BS multiple choice answers - ones even written by other humans, and I'm not a PhD ML student, so I don't know if its feasbile for us to build a good MC option generator.
 
 #### Short Answer
 1. Create a similarity algorithm that determines if the inputted answer is correct. Could be as simple as if input contains a certain number of keywords, then it is correct.
